@@ -1,0 +1,26 @@
+{
+  "name": "domitai-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "domitai",
+    "bitcoin",
+    "ecommerce"
+  ],
+  "author": "Mario Medina <sdk@domitai.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taidomi-sapi-de-cv/domitai-ecommerce"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "@domitai/domitai-sdk": "^1.0.6"
+  }
+}
