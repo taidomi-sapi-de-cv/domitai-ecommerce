@@ -16,14 +16,10 @@
     <title>Domitai PoS test plugin</title>
 </head>
 <body>
-<div id="contenedor"></div>
 <script>
   const domitai = Domitai({ slug: 'opticalcube' });
-  domitai.render('#contenedor', { slug: 'opticaltest', amount: '100.00', currency: 'MXNt', cartName: 'Generic Cart Payment' })
-    .then(payment => domitai.show('#contenedor'));
-  // domitai.ticker('ltc_mxn').then(console.log);
-  // domitai.pos.newPayment({ slug: 'opticaltest', amount: '100.00', currency: 'MXNt' }).then(console.log);
-
+  domitai.render({ slug: 'opticaltest', amount: '100.00', currency: 'MXNt', cartName: 'Generic Cart Payment' })
+    .then(payment => domitai.show());
 </script>
 
 <div class="container container-sm">
