@@ -31,7 +31,7 @@
     "workbox-webpack-plugin": "^5.1.2"
   },
   "dependencies": {
-    "@domitai/domitai-sdk": "^1.0.6",
+    "@domitai/domitai-sdk": "^1.0.7",
     "@popperjs/core": "^2.2.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.0",
