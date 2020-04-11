@@ -1,11 +1,11 @@
-module.exports = `
+module.exports = require('handlebars').compile(`
 <div class="modal fade" id="domitaiPosModal" tabindex="-1" role="dialog" aria-labelledby="domitaiPosModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">
-                    <h5 class="business-name ">Domitai PoS<img alt="Merchant Verified"
+                    <h5 class="business-name ">{{store.name}}<img alt="Merchant Verified"
                                                                src="https://domitai.com/assets/img/verified.png"
                                                                style="width: 18px; height: 18px; margin-left: 6px;">
                     </h5>
@@ -19,24 +19,20 @@ module.exports = `
             <div class="modal-body">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">Test Fixed Price Button
-                            <div class="float-right">0.005 BTC</div>
+                        <h6 class="card-subtitle mb-2 text-muted">{{cartName}}
+                            <div class="float-right">{{payload.original_amount}} {{payload.original_currency}}</div>
                         </h6>
                         <hr>
 
                         <h5 class="card-title mb-2 text-center">Select payment currency</h5>
                         <ul class="list-group list-group-flush">
+                        {{#each payload.accepted}}
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div><img src="https://domitai.com/assets/img/coins/BTC.png" class="img-fluid img-coin mr-2"
-                                          alt="Bitcoin"> Bitcoin</div>
-                                0.005 BTC
+                                <div><img src="https://domitai.com/assets/img/coins/{{currency}}.png" class="img-fluid img-coin mr-2"
+                                          alt="Bitcoin" onerror="this.src='https://domitai.com/assets/img/coins/default.png'"> {{label}}</div>
+                                {{amount}} {{currency}}
                             </li>
-
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div><img src="https://domitai.com/assets/img/coins/LTC.png" class="img-fluid img-coin mr-2"
-                                     alt="Litecoin"> Litecoin</div>
-                                0.005 LTC
-                            </li>
+                        {{/each}}
                         </ul>
                         <!--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
                         <!--                        <a href="#" class="card-link">Card link</a>-->
@@ -51,5 +47,4 @@ module.exports = `
         </div>
     </div>
 </div>
-
-`;
+`);
