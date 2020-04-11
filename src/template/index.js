@@ -4,4 +4,6 @@ module.exports = {
   , currency_selection_footer: require('./currency_selection_footer')
   , pay: require('./pay')
   , pay_footer: require('./pay_footer')
+  , expired: require('./expired')
+  , confirmed: require('./confirmed')
 }

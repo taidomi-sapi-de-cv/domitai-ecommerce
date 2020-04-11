@@ -1,7 +1,8 @@
 module.exports = require('handlebars').compile(`
                <div class="card">
                     <div class="card-header">
-                        <h6 class="card-subtitle mt-1 text-muted">{{cartName}}
+                        <h6 class="card-subtitle mt-1 text-muted">
+                            <div class="float-left">{{cartName}}<div class="small">Order {{oid}}</div></div>
                             <div class="float-right">{{payload.original_amount}} {{payload.original_currency}}</div>
                         </h6>
                     </div>
