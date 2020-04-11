@@ -41,9 +41,8 @@ module.exports = (params) => {
 
     $(`#${this.target} .domitai-modal-footer`).html(templates.pay_footer());
 
-    accepted.forEach(f => $(`div.${f.id} div.domitai-payment-qr`).qrcode(f.uri));
+    accepted.forEach(f => $(`div.${f.id} div.domitai-payment-qr`).qrcode(f.uri)); // TODO: calculate the container width to set the qr size
 
-    // $('#domitai-payment-qr').qrcode(acceptedGroup[currency].standard[0].uri);
     let totalTime = Math.floor((new Date(payment.payload.expires_at).getTime() - new Date(payment.payload.created_at).getTime()) / 1000);
     let remaining = totalTime;
     const fn = async () => {
