@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server src/index.js -o dist/index.min.js -s Domitai --mode development",
+    "build": "webpack --mode production"
   },
   "keywords": [
     "domitai",
@@ -18,9 +20,21 @@
     "url": "https://github.com/taidomi-sapi-de-cv/domitai-ecommerce"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "browserify": "^16.5.1",
+    "http-server": "^0.12.1",
+    "nodemon": "^2.0.3",
+    "server": "^1.0.27",
+    "watchify": "^3.11.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "dependencies": {
-    "@domitai/domitai-sdk": "^1.0.6"
+    "@domitai/domitai-sdk": "^1.0.6",
+    "@popperjs/core": "^2.2.2",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.1"
   }
 }
