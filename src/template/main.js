@@ -35,6 +35,11 @@ module.exports = require('handlebars').compile(`
                                           alt="Bitcoin" onerror="this.src='https://domitai.com/assets/img/coins/default.png'"> {{label}}</div>
                                 <div class="float-right mt-1">{{amount}} {{currency}}</div></div>
                                 <div class="card-footer bg-transparent">
+                                  <!--<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-secondary">{{label}}</button>
+                                    <button type="button" class="btn btn-secondary">{{label}}</button>
+                                    <button type="button" class="btn btn-secondary">{{label}}</button>
+                                  </div>-->
                                   <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
                                     <label class="custom-control-label" for="customSwitch1">{{label}}</label>
