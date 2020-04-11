@@ -1,4 +1,5 @@
 module.exports = require('handlebars').compile(`
+
 <div class="modal fade" id="domitaiPosModal" tabindex="-1" role="dialog" aria-labelledby="domitaiPosModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -27,10 +28,19 @@ module.exports = require('handlebars').compile(`
                         <h5 class="card-title mb-2 text-center">Select payment currency</h5>
                         <ul class="list-group list-group-flush">
                         {{#each payload.accepted}}
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div><img src="https://domitai.com/assets/img/coins/{{currency}}.png" class="img-fluid img-coin mr-2"
+                            <li class="list-group-item d-flex justify-content-between align-items-center borderless m-0 mb-2 p-0">
+                            <div class="card" style="width: 100%;">
+                              <div class="card-header bg-transparent">
+                                <div class="float-left"><img src="https://domitai.com/assets/img/coins/{{currency}}.png" class="img-fluid img-coin mr-2"
                                           alt="Bitcoin" onerror="this.src='https://domitai.com/assets/img/coins/default.png'"> {{label}}</div>
-                                {{amount}} {{currency}}
+                                <div class="float-right mt-1">{{amount}} {{currency}}</div></div>
+                                <div class="card-footer bg-transparent">
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <label class="custom-control-label" for="customSwitch1">{{label}}</label>
+                                  </div>
+                                </div>
+                              </div>
                             </li>
                         {{/each}}
                         </ul>
@@ -47,4 +57,9 @@ module.exports = require('handlebars').compile(`
         </div>
     </div>
 </div>
+<style>
+.borderless {
+    border: none;
+}
+</style>
 `);
