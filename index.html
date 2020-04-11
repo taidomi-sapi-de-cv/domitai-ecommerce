@@ -21,7 +21,9 @@
   const domitai = Domitai({ slug: 'opticalcube' });
   domitai.render('#contenedor');
   domitai.show('#contenedor');
-  domitai.ticker('ltc_mxn').then(console.log)
+  // domitai.ticker('ltc_mxn').then(console.log);
+  domitai.pos.newPayment({ slug: 'opticaltest', amount: '100.00', currency: 'MXNt' }).then(console.log);
+
 </script>
 
 <div class="container container-sm">

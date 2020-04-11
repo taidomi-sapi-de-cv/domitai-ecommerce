@@ -7,9 +7,7 @@ const $ = require('jquery')
 module.exports = (params) => {
   const domitai = DomitaiLib(params);
   return {
-    ticker: async (market) => {
-      return await domitai.ticker(market || 'eth_mxn')
-    },
+    ...domitai,
     render: (target) => {
       if (!target) return alert('You need to send the target parameter');
       $(target).html(templates.main);
