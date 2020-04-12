@@ -34,7 +34,7 @@ module.exports = require('handlebars').compile(`
     max-width: 2.5rem;
 }
 div.domitai-payment-qr canvas {
-    width: 100%;
+    max-width: 100%;
 }
 </style>
 `);
