@@ -9,7 +9,7 @@ const $ = jQuery = require('jquery')
   , copyToClipboard = require('./helpers/copyToClipboard')
 
 
-module.exports = (params) => {
+module.exports = (params = { noBootstrap: false }) => {
   const domitai = DomitaiLib(params);
   this.target = 'domitai_ecommerce_target_container';
 

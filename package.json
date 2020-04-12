@@ -20,11 +20,6 @@
     "url": "https://github.com/taidomi-sapi-de-cv/domitai-ecommerce"
   },
   "devDependencies": {
-    "browserify": "^16.5.1",
-    "http-server": "^0.12.1",
-    "nodemon": "^2.0.3",
-    "server": "^1.0.27",
-    "watchify": "^3.11.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
@@ -34,7 +29,6 @@
     "@domitai/domitai-sdk": "^1.0.10",
     "@popperjs/core": "^2.2.2",
     "bootstrap": "^4.4.1",
-    "ejs": "^3.0.2",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.0",
     "jquery.qrcode": "^1.0.3",
