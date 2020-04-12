@@ -1,5 +1,6 @@
 module.exports = require('handlebars').compile(`
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <div class="modal fade" id="domitaiPosModal" tabindex="-1" role="dialog" aria-labelledby="domitaiPosModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -28,6 +29,9 @@ module.exports = require('handlebars').compile(`
 <style>
 .borderless {
     border: none;
+}
+.img-coin {
+    max-width: 5vw;
 }
 </style>
 `);
