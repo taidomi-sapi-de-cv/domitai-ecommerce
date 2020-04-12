@@ -115,7 +115,7 @@ module.exports = (params = { noBootstrap: false }) => {
       address: accepted[0].address,
     }));
 
-    $(`#${this.target} .domitai-modal-footer`).html(templates.pay_footer());
+    $(`#${this.target} .domitai-modal-footer`).html(templates.confirmed_footer());
   }
 
 

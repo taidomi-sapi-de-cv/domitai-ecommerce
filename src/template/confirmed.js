@@ -20,7 +20,7 @@ module.exports = require('handlebars').compile(`
     <button class="btn btn-success" onclick="window.open('https://domitai.com/api/pos/receipt/{{oid}}','_blank')">View receipt</button>
   </div>
   <div class="card-footer small">
-      <span class="text-muted">This payment has been processed on behalf of the merchant or charity that referred you to this invoice by Taidomi SAPI de CV (Domitai)</span>
+      <span class="text-muted">This payment was processed on behalf of the merchant or charity that referred you to this invoice by Taidomi SAPI de CV (Domitai)</span>
   </div>
 </div>
 `);

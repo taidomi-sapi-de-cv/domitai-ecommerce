@@ -6,4 +6,5 @@ module.exports = {
   , pay_footer: require('./pay_footer')
   , expired: require('./expired')
   , confirmed: require('./confirmed')
+  , confirmed_footer: require('./confirmed_footer')
 }
