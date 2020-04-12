@@ -1,12 +1,13 @@
 {
   "name": "domitai-ecommerce",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx mocha tests/**/*.test.js --exit --bail --timeout 120000",
     "start": "webpack-dev-server src/index.js -o dist/index.min.js -s Domitai --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "prepublishOnly": "npm test && npm --no-git-tag-version version patch"
   },
   "keywords": [
     "domitai",
@@ -23,7 +24,9 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
-    "workbox-webpack-plugin": "^5.1.2"
+    "workbox-webpack-plugin": "^5.1.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1"
   },
   "dependencies": {
     "@domitai/domitai-sdk": "^1.0.10",
