@@ -33,5 +33,8 @@ module.exports = require('handlebars').compile(`
 .img-coin {
     max-width: 2.5rem;
 }
+div.domitai-payment-qr canvas {
+    width: 100%;
+}
 </style>
 `);

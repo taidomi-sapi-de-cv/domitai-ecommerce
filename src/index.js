@@ -45,17 +45,17 @@ module.exports = (params = { noBootstrap: false }) => {
 
     let totalTime = Math.floor((new Date(payment.payload.expires_at).getTime() - new Date(payment.payload.created_at).getTime()) / 1000);
     let remaining = totalTime;
-    const fn = async () => {
+    const updateTimer = async () => {
       remaining = Math.floor((new Date(payment.payload.expires_at).getTime() - new Date().getTime()) / 1000);
       if (remaining < 0) remaining = 0;
       $('.progress-bar').css('width', `${Math.floor(100 * remaining / totalTime)}%`);
       $('.progress-bar-text').text(`Expires in ${remaining.toString().toHHMMSS()}`);
-      if (remaining > 0) setTimeout(fn, 5000); else {
+      if (remaining > 0) setTimeout(updateTimer, 5000); else {
         await domitai.pos.mute(payment.oid);
         return this.expired();
       }
     }
-    fn();
+    updateTimer();
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       const acceptedLabel = e.target.id.split('-tab').shift();
       const acceptedCoin = accepted.find(f => f.id === acceptedLabel);
