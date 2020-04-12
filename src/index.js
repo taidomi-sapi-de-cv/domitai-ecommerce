@@ -21,13 +21,11 @@ module.exports = (params) => {
     $(`.domitai-payment-methods`).removeClass('active btn-outline-primary').addClass('btn-outline-secondary');
     $(`.${currency}`).removeClass('btn-outline-secondary').addClass('active btn-outline-primary');
   }
-  this.pay = () => {
+  this.pay = async () => {
     // const { slug, amount, currency, customer_data, generateQR, cartName = '' } = this.paymentOpts;
     const { cartName = '' } = this.paymentOpts;
     const { currency, nonstandard, acceptedGroup, payment, store } = this;
     const accepted = acceptedGroup[currency][nonstandard ? 'nonStandard' : 'standard'];
-    console.log('pagando con ', this.currency, this.nonstandard)
-    console.log('accepted', accepted)
     $(`#${this.target} .domitai-modal-body`).html(templates.pay({
       ...payment,
       store: store.payload,
@@ -46,17 +44,14 @@ module.exports = (params) => {
     let totalTime = Math.floor((new Date(payment.payload.expires_at).getTime() - new Date(payment.payload.created_at).getTime()) / 1000);
     let remaining = totalTime;
     const fn = async () => {
-      let remaining = Math.floor((new Date(payment.payload.expires_at).getTime() - new Date().getTime()) / 1000);
-      // remaining--;
+      remaining = Math.floor((new Date(payment.payload.expires_at).getTime() - new Date().getTime()) / 1000);
+      if (remaining < 0) remaining = 0;
       $('.progress-bar').css('width', `${Math.floor(100 * remaining / totalTime)}%`);
       $('.progress-bar-text').text(`Expires in ${remaining.toString().toHHMMSS()}`);
-      const status = await domitai.pos.getPaymentStatus(payment.oid);
-      console.log('Status', status, payment.oid);
-      if (status.success && status.oid === payment.oid) {
-        if (status.payload === 'payment_expired') return this.expired();
-        if (status.payload === 'payment_received') return this.confirmed();
+      if (remaining > 0) setTimeout(fn, 5000); else {
+        await domitai.pos.mute(payment.oid);
+        return this.expired();
       }
-      if (remaining > 0) setTimeout(fn, 5000); else this.expired();
     }
     fn();
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -64,20 +59,31 @@ module.exports = (params) => {
       const acceptedCoin = accepted.find(f => f.id === acceptedLabel);
       // console.log(e.target.id) // newly activated tab
       // e.relatedTarget // previous active tab
-      console.log('Cambiando aceptado', acceptedLabel, acceptedCoin);
     })
     $('#myTab li:first-child a').tab('show')
     $('.copiable-button-addon').on('click', function (e) {
       copyToClipboard(document.getElementById(e.target.id.split('button-addon')[0] + 'input'));
     });
+    const waitingStatus = await domitai.pos.listen(payment.oid);
+    console.log('Waiting for payment', waitingStatus);
+    do {
+      const paymentStatus = await domitai.pos.wait(payment.oid);
+      console.log('Status', paymentStatus, payment.oid);
+      if (paymentStatus.status === 'payment_expired') {
+        await domitai.pos.mute(payment.oid);
+        return this.expired();
+      }
+      if (paymentStatus.status === 'payment_received') {
+        await domitai.pos.mute(payment.oid);
+        return this.confirmed();
+      }
+    } while (remaining > 0);
   }
 
   this.expired = () => {
     const { cartName = '' } = this.paymentOpts;
     const { currency, nonstandard, acceptedGroup, payment, store } = this;
     const accepted = acceptedGroup[currency][nonstandard ? 'nonStandard' : 'standard'];
-    console.log('pagando con ', this.currency, this.nonstandard)
-    console.log('accepted', acceptedGroup[currency])
     $(`#${this.target} .domitai-modal-body`).html(templates.expired({
       ...payment,
       store: store.payload,
@@ -96,8 +102,6 @@ module.exports = (params) => {
     const { cartName = '' } = this.paymentOpts;
     const { currency, nonstandard, acceptedGroup, payment, store } = this;
     const accepted = acceptedGroup[currency][nonstandard ? 'nonStandard' : 'standard'];
-    console.log('pagando con ', this.currency, this.nonstandard)
-    console.log('accepted', acceptedGroup[currency])
     $(`#${this.target} .domitai-modal-body`).html(templates.confirmed({
       ...payment,
       store: store.payload,
