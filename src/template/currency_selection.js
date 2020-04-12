@@ -11,7 +11,7 @@ module.exports = require('handlebars').compile(`
         {{#each acceptedGroup}}
         <button class="btn btn-block btn-outline-secondary domitai-payment-methods {{standard.0.currency}}" onclick="domitai_ecommerce.selectCurrency('{{standard.0.currency}}')">
         <div class="row">
-          <div class="col text-left text-justify text-nowrap"><img src="https://domitai.com/assets/img/coins/{{standard.0.currency}}.png" class="img-fluid img-coin mr-2"
+          <div class="col text-left text-justify text-nowrap"><img src="https://domitai.com/assets/img/coins/{{standard.0.currency}}.png" class="img-coin mr-2"
                     alt="Bitcoin" onerror="this.src='https://domitai.com/assets/img/coins/default.png'"> {{standard.0.name}}</div>
           <div class="col mt-1 text-right">{{standard.0.amount}} {{standard.0.currency}}</div>
         </div>

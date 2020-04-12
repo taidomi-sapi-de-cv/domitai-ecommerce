@@ -31,7 +31,7 @@ module.exports = require('handlebars').compile(`
     border: none;
 }
 .img-coin {
-    max-width: 5vw;
+    max-width: 2.5rem;
 }
 </style>
 `);

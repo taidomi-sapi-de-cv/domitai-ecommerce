@@ -11,17 +11,14 @@
 <!-- Code for testing domitai PoS module -->
 <script src="index.min.js"></script>
 <script>
-  const domitai = Domitai();
-  setTimeout(() => {
+    const domitai = Domitai();
     domitai.render({ slug: 'opticaltest', amount: '100.00', currency: 'MXNt', cartName: 'Generic Cart Payment' })
       .then(payment => domitai.show());
-  }, 5000)
 </script>
 <!-- End code for testing domitai PoS module -->
 
 <div class="container container-sm">
     <h1>This is a test page for adding Domitai PoS to a site</h1>
-    <p>In 5 seconds you should see a modal window with the payment details</p>
 </div>
 
 
