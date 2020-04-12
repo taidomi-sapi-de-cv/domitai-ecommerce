@@ -12,6 +12,8 @@ const $ = jQuery = require('jquery')
 module.exports = (params) => {
   const domitai = DomitaiLib(params);
   this.target = 'domitai_ecommerce_target_container';
+
+  if (!params.noBootstrap) $("HEAD").append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">');
   $("BODY").append("<div id='" + this.target + "'></div>");
   window.domitai_ecommerce = this;
   this.selectCurrency = (currency) => {

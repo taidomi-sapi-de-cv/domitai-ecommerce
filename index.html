@@ -4,26 +4,25 @@
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
     <title>Domitai PoS test plugin</title>
 </head>
 <body>
 
-<div class="container container-sm">
-    <h1>This is a test page for adding Domitai PoS to a site</h1>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button>
-</div>
-
+<!-- Code for testing domitai PoS module -->
 <script src="index.min.js"></script>
 <script>
-  const domitai = Domitai({ slug: 'opticalcube' });
-  domitai.render({ slug: 'opticaltest', amount: '100.00', currency: 'MXNt', cartName: 'Generic Cart Payment' })
-    .then(payment => domitai.show());
+  const domitai = Domitai();
+  setTimeout(() => {
+    domitai.render({ slug: 'opticaltest', amount: '100.00', currency: 'MXNt', cartName: 'Generic Cart Payment' })
+      .then(payment => domitai.show());
+  }, 5000)
 </script>
+<!-- End code for testing domitai PoS module -->
+
+<div class="container container-sm">
+    <h1>This is a test page for adding Domitai PoS to a site</h1>
+    <p>In 5 seconds you should see a modal window with the payment details</p>
+</div>
 
 
 </body>
